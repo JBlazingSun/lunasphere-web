@@ -663,21 +663,27 @@ const TopViewAnalysis = memo(function TopViewAnalysis({
             <span className='hidden sm:inline'>
               {t('detection.topView.features.deepLearning')}
             </span>
-            <span className='sm:hidden'>AI</span>
+            <span className='sm:hidden'>
+              {t('detection.topView.features.deepLearning')}
+            </span>
           </div>
           <div className='inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-green-50 dark:bg-green-950/20 rounded-full text-green-600 dark:text-green-400 text-xs md:text-sm font-medium border border-green-200 dark:border-green-800'>
             <span className='text-sm md:text-base'>🔒</span>
             <span className='hidden sm:inline'>
               {t('detection.topView.features.privacy')}
             </span>
-            <span className='sm:hidden'>隐私</span>
+            <span className='sm:hidden'>
+              {t('detection.topView.features.privacy')}
+            </span>
           </div>
           <div className='inline-flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-purple-50 dark:bg-purple-950/20 rounded-full text-purple-600 dark:text-purple-400 text-xs md:text-sm font-medium border border-purple-200 dark:border-purple-800'>
             <span className='text-sm md:text-base'>⚕️</span>
             <span className='hidden sm:inline'>
               {t('detection.topView.features.medical')}
             </span>
-            <span className='sm:hidden'>医疗</span>
+            <span className='sm:hidden'>
+              {t('detection.topView.features.medical')}
+            </span>
           </div>
         </div>
       </div>
