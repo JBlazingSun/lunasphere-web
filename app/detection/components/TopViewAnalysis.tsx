@@ -22,6 +22,7 @@ import ShootingTipsDisplay from './ShootingTipsDisplay'
 
 import { getModelInstance, type ModelPrediction } from '@/lib/model-inference'
 import { useLocale } from '@/contexts/LocaleContext'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 interface TopViewAnalysisProps {
   modelPath: string
@@ -357,6 +358,7 @@ const TopViewAnalysis = memo(function TopViewAnalysis({
   onAnalysisResultChange,
 }: TopViewAnalysisProps) {
   const { t } = useLocale()
+  const isMobile = useIsMobile()
 
   // Internal state management
   const [topImage, setTopImage] = useState<ImageUploadData | null>(null)
@@ -807,19 +809,35 @@ const TopViewAnalysis = memo(function TopViewAnalysis({
               </div>
               <div className='space-y-3 md:space-y-4'>
                 {/* Rotation Control */}
-                <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-2'>
-                  <div className='flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2'>
-                    <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-                      {t('detection.topView.upload.rotation')}
-                    </span>
-                    <span className='text-xs text-gray-500 dark:text-gray-400'>
-                      {t('detection.topView.upload.rotationTip')}
-                    </span>
-                  </div>
-                  <div className='flex justify-center sm:justify-end'>
+                <div
+                  className={
+                    isMobile
+                      ? 'space-y-2'
+                      : 'flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-2'
+                  }
+                >
+                  {!isMobile && (
+                    <div className='flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2'>
+                      <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
+                        {t('detection.topView.upload.rotation')}
+                      </span>
+                      <span className='text-xs text-gray-500 dark:text-gray-400'>
+                        {t('detection.topView.upload.rotationTip')}
+                      </span>
+                    </div>
+                  )}
+                  <div
+                    className={
+                      isMobile ? 'w-full' : 'flex justify-center sm:justify-end'
+                    }
+                  >
                     <RotationControl
                       rotation={topImage?.rotation || 0}
                       onChange={rotation => setImageRotation(rotation)}
+                      showSlider={isMobile}
+                      isMobile={isMobile}
+                      className={isMobile ? 'w-full' : ''}
+                      t={t}
                     />
                   </div>
                 </div>
