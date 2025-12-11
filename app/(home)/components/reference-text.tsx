@@ -21,7 +21,7 @@ export function ReferenceText({
   locale: propLocale,
 }: ReferenceTextProps) {
   const [showTooltip, setShowTooltip] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const { locale: contextLocale, t } = useLocale()
 
   // Use prop locale if provided, otherwise use context locale

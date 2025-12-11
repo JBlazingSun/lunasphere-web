@@ -434,7 +434,7 @@ interface ProfileUploadAreaProps {
   templateAltKey: string
 
   // Required ref for file input control
-  fileInputRef: RefObject<HTMLInputElement>
+  fileInputRef: RefObject<HTMLInputElement | null>
 
   // Stage configuration
   stageSize?: { width: number; height: number }
@@ -634,7 +634,7 @@ export function ProfileUploadArea({
     }
   }
 
-  const handleStageClick = (e: KonvaEventObject<MouseEvent>) => {
+  const handleStageClick = (e: KonvaEventObject<any>) => {
     // Deselect if clicking on empty area
     if (e.target === e.target.getStage()) {
       onImageSelect?.()
