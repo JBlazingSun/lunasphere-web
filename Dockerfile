@@ -1,6 +1,6 @@
 # Multi-stage build for Next.js application
 # Stage 1: Base image with build dependencies
-FROM node:18-alpine AS base
+FROM node:25-alpine AS base
 RUN apk add --no-cache \
     libc6-compat \
     python3 \
